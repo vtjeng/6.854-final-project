@@ -28,11 +28,11 @@ public class Project_6854 {
 		
 		System.out.println("- - program started - -");
 		long startTime = System.currentTimeMillis();
-		JLDimTest();
+		JLLookingAtRho();
 		long endTime = System.currentTimeMillis();
 		System.out.println("program finished in "+(endTime - startTime)+" ms");
 	}
-	
+
 	public static void JLLookingAtRho() throws FileNotFoundException, UnsupportedEncodingException{
 		
 		int exportSize = 480;
@@ -40,7 +40,7 @@ public class Project_6854 {
 		String dataFile = "data\\Movie100K.data";
 		
 
-		String outputFileName = "JLRhoValues"+System.currentTimeMillis()+".csv";
+		String outputFileName = "logging\\JLRhoValues"+System.currentTimeMillis()+".csv";
 		PrintWriter outputFile = new PrintWriter(outputFileName, "UTF-8");
 		double[][] data = loadData(dataFile);
 
