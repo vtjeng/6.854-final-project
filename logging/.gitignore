@@ -1,0 +1,5 @@
+# we ignore all values stored to this logging directory since they vary run to run.
+
+*
+
+!.gitignore
