@@ -33,54 +33,6 @@ public class Project_6854 {
 		System.out.println("program finished in "+(endTime - startTime)+" ms");
 	}
 	
-	public static void JLSpeedTest(){
-
-		String dataFile = "data\\Movie100K.data";
-
-		double[][] data = loadData(dataFile);
-
-		final int trainingSize = 1200;
-		final int testSize = data[0].length - trainingSize;
-		final int numUsers = data.length;
-
-		double[][] trainingData = selectRows(data,0,trainingSize);
-
-		double[][] testData = selectRows(data,trainingSize,testSize+trainingSize);
-
-		double[][] scaledTrainingData = scale(trainingData);
-
-		double dim = 1;
-		double skipTo = 707;
-
-		//this is to warm up the CPU
-		System.gc();
-		long startTime = System.currentTimeMillis(),endTime;
-		while(System.currentTimeMillis()-startTime<5000){
-			double[][] JLData = JLTransform(scaledTrainingData,1000);
-		}
-
-
-		for(int iter = 1;iter < 100; iter ++){
-			while(dim<skipTo){
-				dim+=1;
-				dim *= 1.1;
-			}
-
-			startTime = System.currentTimeMillis();
-			for(int rep = 0;rep<repeats;rep++){
-				double[][] JLData = JLSparseTransform(scaledTrainingData,(int)dim,5);
-				double[][] covariance = covariance(JLData);
-			}
-			endTime =System.currentTimeMillis();
-
-			System.out.println((int)dim+" "+(endTime-startTime)/repeats);
-			dim+=1;
-			dim *= 1.1;
-		}
-
-
-	}
-	
 	public static void JLLookingAtRho() throws FileNotFoundException, UnsupportedEncodingException{
 		
 		int exportSize = 480;
